@@ -75,7 +75,7 @@ Check `src/module` directory:
 ```bash
 jyothirganesh@jyothirganesh:~/VLSI$ ls VSDBabySoC/src/module/
 avsddac.v  clk_gate.v  pseudo_rand.sv  rvmyth.tlv  testbench.rvmyth.post-routing.v  vsdbabysoc.v
-avsdpll.v  pseudo_rand_gen.sv  rvmyth_gen.v    rvmyth.v    testbench.v
+avsdpll.v  pseudo_rand_gen.sv  rvmyth_gen.v  testbench.v
 ```
 
 ---
@@ -94,9 +94,15 @@ Steps performed:
 sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v \
 --bestsv --noline -p verilog --outdir ./src/module/
 ```
+<img width="1161" height="584" alt="Image" src="https://github.com/user-attachments/assets/213eba72-dcce-4d7f-8100-197e93e044f4" />
 
 ✅ Verified that `rvmyth.v` was generated successfully in `src/module/`.
 
+```bash
+jyothirganesh@jyothirganesh:~/VLSI$ ls VSDBabySoC/src/module/
+avsddac.v  clk_gate.v  pseudo_rand.sv  rvmyth.tlv  testbench.rvmyth.post-routing.v  vsdbabysoc.v
+avsdpll.v  pseudo_rand_gen.sv  rvmyth_gen.v    rvmyth.v    testbench.v
+```
 ---
 
 ## ▶️ Step 3 – Pre-Synthesis Simulation
@@ -104,12 +110,16 @@ sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v \
 1. Created an **output directory**:
 
 ```bash
+cd ~/VLSI/VSDBabySoC/
+
 mkdir -p output/pre_synth_sim
 ```
 
 2. Compiled the Verilog design and testbench with **Icarus Verilog**:
 
 ```bash
+cd ~/VLSI/VSDBabySoC/
+
 iverilog -o output/pre_synth_sim/pre_synth_sim.out \
 -DPRE_SYNTH_SIM \
 -I src/include -I src/module src/module/testbench.v
@@ -118,11 +128,19 @@ iverilog -o output/pre_synth_sim/pre_synth_sim.out \
 3. Ran the simulation:
 
 ```bash
+cd ~/VLSI/VSDBabySoC/
+
 cd output/pre_synth_sim
 ./pre_synth_sim.out
 ```
-
 👉 This generated a waveform dump file: **`pre_synth_sim.vcd`**
+Explanation:
+
+DPRE_SYNTH_SIM: Defines the PRE_SYNTH_SIM macro for conditional compilation in the testbench.
+
+The resulting pre_synth_sim.vcd file can be viewed in GTKWave.
+Viewing Waveform in GTKWave
+After running the simulation, open the VCD file in GTKWave:
 
 ---
 
@@ -131,8 +149,12 @@ cd output/pre_synth_sim
 Opened the VCD in GTKWave:
 
 ```bash
+cd ~/VLSI/VSDBabySoC/
+
 gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 ```
+Drag and drop the CLK, reset, OUT (DAC), and RV TO DAC [9:0] signals to their respective locations in the simulation tool
+<img width="1213" height="776" alt="Image" src="https://github.com/user-attachments/assets/8a56a6b7-8471-4a9a-a9a6-0c351f44e140" />
 
 ### Signals Observed
 
@@ -140,6 +162,11 @@ gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 * 🔄 **reset** – External reset signal
 * 🔟 **RV_TO_DAC[9:0]** – 10-bit data output from RVMYTH register #17 to DAC
 * 📤 **OUT** – DAC output signal (digital in simulation, step-like analog view in GTKWave)
+* Viewing DAC output in analog mode
+Drag and drop the CLK, reset, OUT (DAC) (as analog step), and RV TO DAC [9:0] signals to their respective locations in the simulation tool
+<img width="1203" height="758" alt="Image" src="https://github.com/user-attachments/assets/09eacc3d-e22c-4c68-86fc-25f72d237908" />
+
+<img width="1203" height="563" alt="Image" src="https://github.com/user-attachments/assets/e505e2ef-d388-4034-84b8-a780c5f7e235" />
 
 ---
 
