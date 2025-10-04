@@ -124,6 +124,9 @@ iverilog -o output/pre_synth_sim/pre_synth_sim.out \
 -DPRE_SYNTH_SIM \
 -I src/include -I src/module src/module/testbench.v
 ```
+After running this command, you get
+
+[output/pre_synth_sim/pre_synth_sim.out](https://github.com/jyothirganesh-0475/Jyothirganesh_K_RISC-V-SoC-VSD_Week_2/blob/main/Part_2/VSDBabySoC/output/pre_synth_sim/pre_synth_sim.out)
 
 3. Ran the simulation:
 
@@ -133,7 +136,7 @@ cd ~/VLSI/VSDBabySoC/
 cd output/pre_synth_sim
 ./pre_synth_sim.out
 ```
-👉 This generated a waveform dump file: **`pre_synth_sim.vcd`**
+👉 This generated a waveform dump file: **[`pre_synth_sim.vcd`](https://github.com/jyothirganesh-0475/Jyothirganesh_K_RISC-V-SoC-VSD_Week_2/blob/main/Part_2/VSDBabySoC/output/pre_synth_sim/pre_synth_sim.vcd)**
 Explanation:
 
 DPRE_SYNTH_SIM: Defines the PRE_SYNTH_SIM macro for conditional compilation in the testbench.
