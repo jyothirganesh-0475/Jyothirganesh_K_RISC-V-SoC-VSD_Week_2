@@ -25,8 +25,8 @@ The primary motivation for BabySoC is:
 ---
 
 ## 📂 Repository Structure
-- **[part1](./part1/)** – Theory write-up: *Conceptual understanding of SoC design and the role of BabySoC in learning.*  
-- **[part2](./part2/)** – Labs: *Hands-on functional modelling of BabySoC (simulation, waveforms, and analysis).*  
+- **[part1](https://github.com/jyothirganesh-0475/Jyothirganesh_K_RISC-V-SoC-VSD_Week_2/tree/main/Part_1)** – Theory write-up: *Conceptual understanding of SoC design and the role of BabySoC in learning.*  
+- **[part2](https://github.com/jyothirganesh-0475/Jyothirganesh_K_RISC-V-SoC-VSD_Week_2/tree/main/Part_2)** – Labs: *Hands-on functional modelling of BabySoC (simulation, waveforms, and analysis).*  
 
 ---
 
